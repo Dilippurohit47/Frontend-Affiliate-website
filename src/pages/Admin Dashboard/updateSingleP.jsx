@@ -104,7 +104,7 @@ const {price, photo , name , desc, link,category} = products || {
 <h1 className="absolute top-[13.4vh] text-[#69696945] sm:text-[3rem] text-[2rem] font-[700] z-[-0] ">Update Product </h1>
 
 
-  <div className=" flex h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  shadow-2xl">
+  <div className=" mt-[18vh] flex h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  shadow-2xl">
 
     {/* imgdiv */}
     <div className="h-[100%] w-[50%]    border-r-[2px] pl-[1vw] pt-[1vh] object-contain">

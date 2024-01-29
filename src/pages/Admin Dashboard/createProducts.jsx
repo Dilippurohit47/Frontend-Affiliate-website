@@ -90,7 +90,7 @@ const submithandler = async (e) =>{
 <h1 className="absolute top-[13.4vh] text-[#60606075] sm:text-[3rem] text-[1.5rem] font-[700] z-[-0] ">Create New Product </h1>
 
 
-      <div className=" flex h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  shadow-2xl">
+      <div className=" flex h-[70vh] mt-[18vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  shadow-2xl">
 
         {/* imgdiv */}
         <div className="h-[100%] w-[50%]    border-r-[2px] pl-[1vw] pt-[1vh]  ">

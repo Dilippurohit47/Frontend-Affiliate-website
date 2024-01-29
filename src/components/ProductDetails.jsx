@@ -29,8 +29,8 @@ const ProductDetails = () => {
   const product = data?.product;
 
   return (
-    <div className="  sm:mt-[-4px] overflow-y-hidden  h-auto  pt-[10vh] sm:pt-[8vh]  ">
-      <div className="bg-[#232f3e] h-[5vh]   text-[16px] items-center gap-[15px] flex justify-center ">
+    <div className="  sm:mt-[-4px] overflow-y-hidden  h-auto  pt-[9vh] sm:pt-[8vh]  ">
+      <div className="bg-[#232f3e] h-[5vh]  sm:text-center sm:pt-[1vh] text-[16px] items-center gap-[15px] flex justify-center ">
         {categoryData?.categories.map((i, index) => (
           <Link
             to={`/category/${i.name}`}

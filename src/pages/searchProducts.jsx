@@ -22,12 +22,12 @@ isLoading ? <Loader/> : (
 {
 data.products.length === 0 ? (
   <>
-  <p> Oopss! No Products with  the name  {search} available.</p>
+  <p className=' '> Oopss! No Products with  the name  <span className='font-[500]'>{search}</span> available.</p>
   </>
 ) :(
   <>
   
-<h1 className=' text-[2rem] text-gray-900 font-[600]'>{search}</h1>
+<h1 className=' text-[2rem] text-gray-900 capitalize font-[600]'>{search}</h1>
 
   <div className={`  h-[auto] sm:py-[10px] sm:ml-[0] ml-[5.5vw]  whitespace-wrap  overflow-x-auto  overflow-y-hidden scrollbar-hide`} >
 {

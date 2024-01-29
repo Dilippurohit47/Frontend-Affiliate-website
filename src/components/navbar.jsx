@@ -313,7 +313,7 @@ const Navbar = () => {
             </div>
 
             <p
-              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[50vh] vsm:translate-x-[32vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[45vh] vsm:translate-x-[32vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
               onClick={() => setmenu(!menu)}
             >
               <IoCloseOutline />

@@ -7,7 +7,7 @@ export default {
   theme: {
     screens: {
 
-      "vsm":{"max" : "330px"},
+      "vsm":{"max" : "365px"},
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
