@@ -94,8 +94,8 @@ const submithandler = async (e) =>{
         <div className="h-[100%] sm:w-[50%] border-[2px] sm:border-[0]  sm:border-r-[2px] pl-[1vw] pt-[1vh]  ">
 
 <p className="text-[#808080de] sm:mt-[1vh] ml-[25vw] sm:ml-[0]">Upload image here</p>
-<div className="h-[40vh] mt-[5vh]  flex justify-center items-center">
-{photoPrev && <img   src={photoPrev} alt="" className="sm:h-[30vh] object-cover " /> }
+<div className="sm:h-[18vw] h-[40vh] mt-[5vh]  flex justify-center items-center">
+{photoPrev && <img   src={photoPrev} alt="" className="sm:h-[40vh]  h-[40vh] object-contain" /> }
 
 </div>
 

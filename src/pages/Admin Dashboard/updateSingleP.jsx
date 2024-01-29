@@ -114,15 +114,16 @@ const {price, photo , name , desc, link,category} = products || {
   <div className=" mt-[18vh]  flex flex-col sm:flex-row h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  sm:shadow-2xl">
 
     {/* imgdiv */}
+
     <div className="h-[100%] sm:w-[50%]  border-[2px]  sm:border-r-[2px] pl-[1vw] pt-[1vh] object-contain">
 
 <p className="text-[#808080de]  sm:ml-0 ml-[25vw]">Upload image here</p>
-<div className="  h-[40vh] mt-[5vh]  flex justify-center   items-center">
+<div className="  sm:h-[40vh]  mt-[5vh]  flex justify-center   items-center">
 {
-  photoUpdate ? <img className="h-[18vw] object-contain  "  src={photoUpdate} alt="New Image" /> :(
+  photoUpdate ? <img className="sm:h-[18vw] h-[40vh]  object-contain"  src={photoUpdate} alt="New Image" /> :(
     
     <>
-     <img   src={`${server}/${photo}`} alt={nameUpdate} className="sm:h-[30vh] object-cover" /> 
+     <img   src={`${server}/${photo}`} alt={nameUpdate} className="sm:h-[40vh] h-[40vh] object-cover" /> 
     </>
   ) 
 }
