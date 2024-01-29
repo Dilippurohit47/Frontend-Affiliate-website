@@ -11,6 +11,8 @@ const navigate = useNavigate();
 const {data , isLoading , isError ,error} = useSingleProductQuery(id)
 const [updateProduct] = useUpdateProductMutation()
 
+const [updating,setupdating] = useState(false)
+
 if(isError){
     console.log("error in up",error)
 }
@@ -66,6 +68,7 @@ const {price, photo , name , desc, link,category} = products || {
 
 
       const UpdateProduct = async(e) =>{
+        setupdating(true);
         e.preventDefault();
         const formdata = new FormData();
         if(nameUpdate) formdata.set("name" , nameUpdate)
@@ -83,6 +86,8 @@ const {price, photo , name , desc, link,category} = products || {
         if("data" in  res) {
           toast.success(res.data.message)
           navigate("/updateproduct") 
+          setupdating(false);
+
 
 
         }
@@ -90,6 +95,8 @@ const {price, photo , name , desc, link,category} = products || {
           console.log(res)
           const error = res.error.data.message
           toast.error(error)
+          setupdating(false);
+
         }
 
       } 
@@ -97,19 +104,19 @@ const {price, photo , name , desc, link,category} = products || {
   return (
     
     <div
-  className="bg-white   w-[100vw] flex z-[-9] justify-center items-center  "
-  style={{ height: "calc( 100vh - 70px) "  }}>
+  className="bg-white    w-[100vw] flex z-[-9] justify-center items-center  "
+>
 
 
 <h1 className="absolute top-[13.4vh] text-[#69696945] sm:text-[3rem] text-[2rem] font-[700] z-[-0] ">Update Product </h1>
 
 
-  <div className=" mt-[18vh] flex h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  shadow-2xl">
+  <div className=" mt-[18vh]  flex flex-col sm:flex-row h-[70vh] sm:w-[50vw] w-[90vw] bg-white z-[9] rounded-[20px]  sm:shadow-2xl">
 
     {/* imgdiv */}
-    <div className="h-[100%] w-[50%]    border-r-[2px] pl-[1vw] pt-[1vh] object-contain">
+    <div className="h-[100%] sm:w-[50%]  border-[2px]  sm:border-r-[2px] pl-[1vw] pt-[1vh] object-contain">
 
-<p className="text-[#808080de]">Upload image here</p>
+<p className="text-[#808080de]  sm:ml-0 ml-[25vw]">Upload image here</p>
 <div className="  h-[40vh] mt-[5vh]  flex justify-center   items-center">
 {
   photoUpdate ? <img className="h-[18vw] object-contain  "  src={photoUpdate} alt="New Image" /> :(
@@ -125,26 +132,23 @@ const {price, photo , name , desc, link,category} = products || {
 
 
 
-<div className=" flex ml-[7vw] mt-[9vh] ">   
+<div className=" flex sm:ml-[7vw] mt-[9vh] sm:mb-0 mb-[2vh] ml-[23vw] ">   
 
           <input required type="file"  className=""  onChange={changeImageHandler} />
         </div>
-
-
-
     </div>
     {/* imgdiv  end*/}
 
-
     {/* form div */}
-    <div className="h-[100%] w-[50%] pl-[3vw]  pt-[5vh] ">
-      <form >
+
+    <div className="h-[100%] sm:w-[50%] pl-[3vw] pt-[5vh] ">
+      <form  className=''>
       {/* one input */}
       <div>
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           Product Name </label>
         <div className="mt-1">
-          <input value={nameUpdate} onChange={(e) =>setNameUpdate(e.target.value)} type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input value={nameUpdate} onChange={(e) =>setNameUpdate(e.target.value)} type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* one input end */}
@@ -154,7 +158,7 @@ const {price, photo , name , desc, link,category} = products || {
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           Price </label>
         <div className="mt-1">
-          <input value={priceUpdate} onChange={(e) =>setPriceUpdate(e.target.value)}  type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input value={priceUpdate} onChange={(e) =>setPriceUpdate(e.target.value)}  type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 2nd input end */}
@@ -164,7 +168,7 @@ const {price, photo , name , desc, link,category} = products || {
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           Category </label>
         <div className="mt-1">
-          <input value={categoryUpdate}  onChange={(e) =>setCategoryUpdate(e.target.value)} type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input value={categoryUpdate}  onChange={(e) =>setCategoryUpdate(e.target.value)} type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 3rd input end */}
@@ -175,7 +179,7 @@ const {price, photo , name , desc, link,category} = products || {
         <label value={descriptionupdate}  for="inputname" className="block text-gray-800 font-semibold text-sm">
           Description </label>
         <div className="mt-1">
-          <input  onChange={(e) =>setdescriptionupdate(e.target.value)}  value={descriptionupdate} type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input  onChange={(e) =>setdescriptionupdate(e.target.value)}  value={descriptionupdate} type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 4th input end */}
@@ -185,7 +189,7 @@ const {price, photo , name , desc, link,category} = products || {
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           Amazon Link </label>
         <div className="mt-1">
-          <input  value={amazonlinkupdate} onChange={(e) =>setamazonlinkupdate(e.target.value)}   type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input  value={amazonlinkupdate} onChange={(e) =>setamazonlinkupdate(e.target.value)}   type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 5th input end */}
@@ -195,14 +199,21 @@ const {price, photo , name , desc, link,category} = products || {
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           AliExpress Link </label>
         <div className="mt-1">
-          <input   type="text" name="inputname" className="block sm:w-56 w-[40vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input   type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 6th input end */}
 
-      <button className="bg-blue-500 font-[600] hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center mt-[2vh] sm:mt-[5vh] ml-[5vw] justify-center rounded-[20px] flex   "   onClick={(e)=>UpdateProduct(e)}>
+
+{
+  updating ? <> <p className='mt-[2vh] mb-[5vh]'>wait Updating..</p> </> : <>
+        <button className="bg-blue-500 font-[600] hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center mt-[2vh] sm:mt-[5vh] sm:ml-[5vw] justify-center rounded-[20px] flex mb-[5vh] ml-0 sm:mb-0"   onClick={(e)=>UpdateProduct(e)}>
 Update
 </button>
+
+  </>
+}
+
 </form>
     </div>
           {/* form div end */}

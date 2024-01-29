@@ -196,6 +196,13 @@ const Navbar = () => {
                   Update Product
                 </h1>
               </Link>
+
+              <p
+              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[45vh] vsm:translate-x-[30vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+              onClick={() => setadminNav(false)}
+            >
+              <IoCloseOutline />
+            </p>
             </div>
           </div>
           {/* admin nav end */}
@@ -268,7 +275,7 @@ const Navbar = () => {
                     <Link
                       to={`category/${i.name}`}
                       key={index}
-                      className="list-none text-[#000000]  w-[25vw]  block  pr-[50px]  font-[400] text-[16px]"
+                      className="list-none text-[#616060d7] capitalize w-[25vw]  block  pr-[50px]  font-[400] text-[16px]"
                       onClick={() => {
                         setmenu(false), setshowCat(false);
                       }}

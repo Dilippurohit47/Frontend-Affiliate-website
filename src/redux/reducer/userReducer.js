@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-
 const initialState ={
     user : null,
     loading:true,
 }
-
 export const userReducer = createSlice({
 
     name : "userReducer",
@@ -15,13 +12,11 @@ export const userReducer = createSlice({
         userExist:(state , action) =>{
             state.loading = false;
             state.user = action.payload;
-            // console.log("logged in")
 
         },
     userNotExist : (state) =>{
         state.loading =false,
         state.user = null;
-        // console.log("not logged in")
     }
 
 

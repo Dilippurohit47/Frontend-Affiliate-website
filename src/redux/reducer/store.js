@@ -10,6 +10,8 @@ export const store = configureStore({
         [userApi.reducerPath]:userApi.reducer,
         [userReducer.name] :userReducer.reducer,
     },
+
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productApi.middleware,userApi.middleware),
+
 }) 
