@@ -1,5 +1,5 @@
 import React from "react";
-import Iphone from "../../assets/iphone.jpeg";
+
 import { MdDeleteForever } from "react-icons/md";
 import {
   useAllProductsQuery,
@@ -33,7 +33,7 @@ const UpdateProduct = () => {
   ) : (
     <>
       <div
-        className="bg-[#80808093] sm:ml-[20vw] overflow-y-auto  overflow-x-hidden px-[0.5vw] h-[90vh] py-[0.5vh] "
+        className="bg-[#80808093] mt-[8.6vh] sm:ml-[20vw] overflow-y-auto  overflow-x-hidden px-[0.5vw] h-[90vh] py-[0.5vh] "
         style={{  sm: { width: "calc(100vw - 20vw)" } }}
       >
         {data?.products?.length === 0 ? (
@@ -57,11 +57,11 @@ const UpdateProduct = () => {
                       onClick={() => navigate(`/updatesingleproduct/${i._id}`)}
                     >
                       <div className="flex  gap-[3vw] sm:gap-[0.6vw] ">
-                        <div className="sm:h-[5.9vh] h-[12vh]     flex justify-center overflow-hidden items-center   w-[20vw] sm:w-[2.9vw] rounded-[50%]">
+                        <div className="sm:h-[5.9vh] h-[12vh]     flex justify-center overflow-hidden items-center bg-transparent   w-[20vw] sm:w-[2.9vw] rounded-[50%]">
                           <img
                             src={`${server}/${i.photo}`}
                             alt=""
-                            className="object-cover  h-[9vh] sm:h-[4.4vh]"
+                            className="object-contain  h-[9vh] sm:h-[4.4vh]"
                           />
                         </div>
 
@@ -69,7 +69,7 @@ const UpdateProduct = () => {
                           <h1 className="text-[1rem]  capitalize font-[500]">
                             {i.name}{" "}
                           </h1>
-                          <h1 className="mt-[-1vh] text-[#808080c6]">
+                          <h1 className="sm:mt-[-.5vh]  text-[0.9rem] text-[#565656] sm:text-[0.9rem] ">
                             {i.category}
                           </h1>
                         </div>
