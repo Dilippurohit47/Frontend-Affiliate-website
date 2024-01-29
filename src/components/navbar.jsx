@@ -154,8 +154,8 @@ const Navbar = () => {
 
           {/* admin nav for mobile */}
           <div
-            className={`bg-white fixed text-left z-[9] h-[100vh] w-[60vw] sm:w-[20vw] border-r-[1px]  shadow-2xl transition-all duration-[0.4s] ease-in-out left-[-60vw]  top-0 sm:left-[-20vw] ${
-              adminNav ? "sm:left-[0] left-[0vh]" : ""
+            className={`bg-white fixed text-left z-[9] h-[100vh] vsm:w-[70vw] w-[60vw] sm:w-[20vw] border-r-[1px]  shadow-2xl transition-all duration-[0.4s] ease-in-out left-[-60vw]  top-0 sm:left-[-20vw] vsm:left-[-70vw] ${
+              adminNav ? "sm:left-[0] vsm:left-[0vw] left-[0vh]" : ""
             }`}
           >
             <div className="bg-[#232F3E] text-white px-[1vw] py-[2vh]  ">
@@ -169,7 +169,7 @@ const Navbar = () => {
               </h1>
             </div>
 
-            <div className="mt-[1vh]" onClick={() => setadminNav(false)}>
+            <div className="mt-[1vh] ml-[1vw]" onClick={() => setadminNav(false)}>
               <Link to={"/"}>
                 <h1
                   className="  h-[5vh] px-[1vw] py-[1vh] font-[500]   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
