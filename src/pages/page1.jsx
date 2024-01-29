@@ -31,7 +31,7 @@ console.log( "all",allProducts)
  <Loader/>
   ) :(
     <>
-    <div className='bg-white sm:h-[43vh] h-[38vh] mt-[8vh]  sm:pt-[2vh]  px-[10px]'>
+    <div className='bg-white sm:h-[43vh] h-[38vh] mt-[7.5vh]  sm:pt-[2vh]  px-[10px]'>
 <h1 className=' text-[2rem] text-gray-900 font-[600]'>Latest Products</h1>
   <div className={`  h-[35vh] sm:py-[10px]     whitespace-nowrap  overflow-x-auto  overflow-y-hidden scrollbar-hide`} >
 {

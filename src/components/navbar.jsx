@@ -71,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-[70px] w-[100%] top-0 border-b-[5px] fixed z-[999]  bg-white border-gray-400 flex items-center   sm:px-[50px] pl-[5vw]  box-border ">
+    <div className="h-[70px] vsm:h-[65px]  w-[100%] top-0 border-b-[5px] fixed z-[999]   bg-white border-gray-400 flex items-center   sm:px-[50px] pl-[5vw]  box-border ">
       {/* admin nav */}
       <div
         className={`bg-white fixed z-[9] h-[100vh] w-[60vw] sm:w-[20vw] border-r-[1px]  shadow-2xl transition-all duration-[0.4s] ease-in-out left-[-60vw]  top-0 sm:left-[-20vw] ${
@@ -123,12 +123,12 @@ const Navbar = () => {
       <div>
         <Link to={"/"}>Logo</Link>
       </div>
-      <div className="flex  sm:ml-[35vw] gap-[20px] ml-[45px] ">
+      <div className="flex  sm:ml-[35vw] vsm:gap-[8px] vsm:ml-[20px]  sm:gap-[20px] gap-[10px] ml-[45px] ">
         <div className="flex cursor-pointer ">
           <input
             type="text"
             placeholder="search for products"
-            className=" sm:w-[30vw] w-[45vw] bg-blue-100 outline-none rounded-l-[8px] px-[15px] py-[8px] "
+            className=" sm:w-[30vw] w-[45vw] vsm:w-[50vw]  bg-blue-100 outline-none rounded-l-[8px] px-[15px] py-[8px] "
             onChange={(e) => setsearch(e.target.value)}
             value={search}
           />
@@ -144,9 +144,9 @@ const Navbar = () => {
 
         {/* menu div for mobile devices */}
 
-        <div className=" flex items-center   sm:hidden text-center  ml-[0.5rem]">
-          <p
-            className="text-[7vw] md:text-[6vw] lg:text-[5vw]"
+        <div className=" flex items-center   sm:hidden text-center  ">
+          <p 
+            className="text-[8vw] vsm:text-[9vw]  md:text-[6vw] lg:text-[5vw]"
             onClick={() => {setmenu(!menu) , setadminNav(false)}}
           >
             <IoMenu />
@@ -202,7 +202,7 @@ const Navbar = () => {
 
           {/* navbar for mobile devices */}
           <div
-            className={`bg-white overflow-y-auto overflow-x-hidden   fixed z-[999] h-[80vh] w-[60vw] border-r-[1px] top-[0]  shadow-2xl transition-all duration-[0.4s] ease-in-out ${
+            className={`bg-white overflow-y-auto overflow-x-hidden vsm:w-[70vw]  fixed z-[999] h-[80vh] w-[60vw] border-r-[1px] top-[0]  shadow-2xl transition-all duration-[0.4s] ease-in-out ${
               menu ? "right-[-0.5vw]" : "right-[-70vw]"
             }`}
           >
@@ -313,7 +313,7 @@ const Navbar = () => {
             </div>
 
             <p
-              className="translate-y-[45vh] bg-[#808080b8] w-[6vw] h-[3vh] items-center  text-white  flex text-center rounded-[50%] justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[50vh] vsm:translate-x-[32vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
               onClick={() => setmenu(!menu)}
             >
               <IoCloseOutline />
