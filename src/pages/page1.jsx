@@ -35,7 +35,7 @@ console.log( "all",allProducts)
 <h1 className=' text-[2rem] text-gray-900 font-[600]'>Latest Products</h1>
   <div className={`  h-[35vh] sm:py-[10px]  whitespace-nowrap  overflow-x-auto  overflow-y-hidden scrollbar-hide`} >
 {
-  product.map((i,index) =>(
+  product?.map((i,index) =>(
     <Product
     key={i._id}
     id={i._id}
@@ -54,7 +54,7 @@ console.log( "all",allProducts)
   <div className={`  h-[35vh] sm:py-[10px]     whitespace-nowrap  overflow-x-auto  overflow-y-hidden scrollbar-hide`} >
 {
  
- categoryData?.categories.map((i,index) =>(
+ categoryData?.categories?.map((i,index) =>(
  <Link to={`category/${i.name}`}     key={index} >   <CatProduct
 
     name={i.name}
@@ -71,7 +71,7 @@ console.log( "all",allProducts)
 <h1 className=' text-[2rem] text-gray-900 font-[600]'>All Products</h1>
   <div className={`  h-[35vh] sm:py-[10px] whitespace-wrap ml-[5.5vw] sm:ml-0 scrollbar-hide`} >
 {
-  allProducts?.products.map((i,index) =>(
+  allProducts?.products?.map((i,index) =>(
     <Product
     key={index}
     id={i._id}

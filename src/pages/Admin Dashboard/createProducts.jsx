@@ -51,7 +51,7 @@ const submithandler = async (e) =>{
     formData.append("category", category.toLowerCase());
     formData.append("link", amazonLink);
     formData.append("photo", photo); // Assuming photo is already a File object
-    const res = await createProduct({  formData })
+    const res = await createProduct({ id:user?._id,  formData })
     if("data" in  res) {
       toast.success(res.data.message)
       // navigate("/updateproduct")

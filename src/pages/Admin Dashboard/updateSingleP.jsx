@@ -3,6 +3,7 @@ import { server } from '../../redux/reducer/store';
 import { useSingleProductQuery, useUpdateProductMutation } from '../../redux/api/productApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 const UpdateSingleP = () => {
 
@@ -10,6 +11,9 @@ const {id} = useParams();
 const navigate = useNavigate();
 const {data , isLoading , isError ,error} = useSingleProductQuery(id)
 const [updateProduct] = useUpdateProductMutation()
+// const {user} = useSelector((state) =>state.userReducer)
+
+const{user} = useSelector((state)=>state.userReducer)
 
 const [updating,setupdating] = useState(false)
 
@@ -81,6 +85,7 @@ const {price, photo , name , desc, link,category} = products || {
         const res = await updateProduct({
           id,
           formdata,
+          userid:user?._id
         })
 
         if("data" in  res) {
@@ -123,7 +128,7 @@ const {price, photo , name , desc, link,category} = products || {
   photoUpdate ? <img className="sm:h-[18vw] h-[40vh]  object-contain"  src={photoUpdate} alt="New Image" /> :(
     
     <>
-     <img   src={`${server}/${photo}`} alt={nameUpdate} className="sm:h-[40vh] h-[40vh] object-cover" /> 
+     <img   src={`${server}/${photo}`} alt={nameUpdate} className="sm:h-[40vh] h-[40vh] object-contain" /> 
     </>
   ) 
 }

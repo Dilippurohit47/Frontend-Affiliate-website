@@ -45,7 +45,7 @@ const ProductDetails = () => {
       </div>
 
       <div className="h-[auto] w-[100v%] mt-[4vw]    flex-col sm:flex-row  flex   sm:px-[10vw] px-[1vw]  ">
-        <div className="sm:h-[55vh] h-[45vh]    justify-center flex sm:ml-[5vw] sm:w-[140vw] sm:border-[2px] hover:border-[0]  px-[1vw] ">
+        <div className="sm:h-[55vh] h-[45vh]    justify-center flex sm:ml-[5vw] sm:w-[20vw] sm:border-[2px] hover:border-[0]  px-[1vw] ">
           <img
             className="   object-contain sm:hover:scale-[1.2]  transition-all ease-in-out duration-[0.2s]  "
             src={`${import.meta.env.VITE_SERVER}/${product?.photo}`}

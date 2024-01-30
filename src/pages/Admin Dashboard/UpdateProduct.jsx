@@ -9,15 +9,25 @@ import { server } from "../../redux/reducer/store";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader";
+import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
+
+  const {user} = useSelector((state) =>state.userReducer)
   const { data, isLoading, isError, Error } = useAllProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
   const navigate = useNavigate();
 
   const deleteHandler = async (_id) => {
-    const res = await deleteProduct(_id);
+    const res = await deleteProduct(
+{
+  Productid: _id,
+  id:user?._id
+
+}
+
+    );
     if ("data" in res) {
       toast.success(res.data.message);
       navigate("/updateproduct");

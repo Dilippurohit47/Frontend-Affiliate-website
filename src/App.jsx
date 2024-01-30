@@ -1,5 +1,5 @@
 import { useState , lazy, Suspense, useEffect } from 'react'
-import { BrowserRouter as Router , Routes ,Route } from 'react-router-dom'
+import { BrowserRouter as Router , Routes ,Route, Navigate } from 'react-router-dom'
 import Navbar from './components/navbar'
 import { Toaster } from 'react-hot-toast'
 import Loader from './components/loader'
@@ -9,6 +9,7 @@ import { userExist, userNotExist } from './redux/reducer/userReducer'
 import { getUser } from './redux/api/userApi'
 import { auth } from './firebase'
 import Apichecker from './pages/Admin Dashboard/Apichecker'
+import PageNotfound from './pages/PageNotfound'
 
 // import ProductDetails from './components/ProductDetails'
 
@@ -27,7 +28,7 @@ const ProductDetails = lazy(() => import("./components/ProductDetails"))
 function App() {
 
 
-  const { user , loading} = useSelector((state) => state.usereReducer) || {};
+  const { user , loading} = useSelector((state) => state.userReducer) || {};
 const dispatch = useDispatch();
 
 
@@ -46,10 +47,20 @@ useEffect(() =>{
     }
   })
 
-})
+},[])
 
 
 
+const AdminRoute = ({ element }) => {
+console.log("userrole" , user?.role)
+  if(user?.role == "admin"){
+    return element
+  }
+  else{
+    return <p className='mt-[20vh]'>page doesnt occur</p>
+  }
+
+};
 
 
   return (
@@ -69,12 +80,15 @@ useEffect(() =>{
 
 <Route path="/check" element={<Apichecker/>}/>
 
-  <Route path="/newproduct" element={<CreateProduct/>}/>
-  <Route path="/updateproduct" element={<UpdateProduct/>}/>
-  <Route path="/updatesingleproduct/:id" element={<UpdateSingleP/>}/>
+<Route path="/newproduct" element={<AdminRoute element={<CreateProduct />} />} />
+  <Route path="/updateproduct" element={<AdminRoute element={<UpdateProduct/>} />}/>
+  <Route path="/updatesingleproduct/:id" element={<AdminRoute element={<UpdateSingleP/>} />}/>
+<Route path="*" element={<PageNotfound/>} />
+
 </Routes>
 </Suspense>
 <Toaster position='bottom-center'/>
+
 
     </Router>
     

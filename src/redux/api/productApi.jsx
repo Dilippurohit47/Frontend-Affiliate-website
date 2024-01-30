@@ -40,8 +40,8 @@ export const productApi = createApi({
     }),
 
     createProduct:builder.mutation({
-      query: ({ formData }) => ({
-        url: `create/new`,
+      query: ({ formData,id }) => ({
+        url: `create/new?id=${id}`,
         method: "POST",
         body: formData,
       }),
@@ -49,8 +49,8 @@ export const productApi = createApi({
     }),
 
     deleteProduct:builder.mutation({
-      query:(Productid) =>({
-        url:`${Productid}`,
+      query:({Productid , id}) =>({
+        url:`${Productid}?id=${id}`,
         method:"DELETE",
 
       }),
@@ -59,8 +59,8 @@ export const productApi = createApi({
     })
 ,
     updateProduct :builder.mutation({
-      query:({id , formdata}) =>({
-        url:`${id}`,
+      query:({id , formdata,userid}) =>({
+        url:`${id}?id=${userid}`,
         method:"PUT",
         body:formdata,
       }),
