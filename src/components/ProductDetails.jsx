@@ -70,19 +70,33 @@ const ProductDetails = () => {
             {product?.desc}
           </p>
 
-          <Link to={product?.link}>
+
+{
+  product?.link && <>
+  <Link to={product?.link} target="_blank">
             <button className="bg-[#fa7000e7] ml-[25vw] sm:ml-0  w-[50vw] text-white sm:w-[12vw] h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[4vh] sm:mt-[2vh] transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  block">
               Buy Now Amazon{" "}
             </button>
           </Link>
+  </>
+}
 
-          <button className="bg-[#ff0000d6] ml-[25vw] sm:ml-0 w-[50vw] text-white sm:w-[12vw]  h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[1vh] block  transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  ">
+          
+
+{
+  product?.aliExpressLink && <>
+  <Link to={product?.aliExpressLink} target="_blank">
+          <button  className="bg-[#ff0000d6] ml-[25vw] sm:ml-0 w-[50vw] text-white sm:w-[12vw]  h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[1vh] block  transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  ">
             Buy Now Aliexpress
-          </button>
+          </button></Link>
+  </>
+}
 
-          <button className="bg-[#118000d9] w-[50vw] ml-[25vw] sm:ml-0 text-white sm:w-[12vw]  h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[1vh]   transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  ">
+
+
+          {/* <button className="bg-[#118000d9] w-[50vw] ml-[25vw] sm:ml-0 text-white sm:w-[12vw]  h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[1vh]   transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  ">
             Buy Now india
-          </button>
+          </button> */}
         </div>
       </div>
 

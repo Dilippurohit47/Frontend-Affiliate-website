@@ -15,6 +15,7 @@ const navigate = useNavigate()
   const [price, setprice] = useState("");
   const [description, setdescription] = useState("");
   const [amazonLink, setamazonLink] = useState("");
+  const [aliExpressLink, setaliExpressLink] = useState("");
   const [photoPrev, setPhotoPrev] = useState("");
   const [photo, setPhoto] = useState();
 
@@ -50,6 +51,7 @@ const submithandler = async (e) =>{
     formData.append("desc", description);
     formData.append("category", category.toLowerCase());
     formData.append("link", amazonLink);
+    formData.append("aliExpressLink",aliExpressLink );
     formData.append("photo", photo); // Assuming photo is already a File object
     const res = await createProduct({ id:user?._id,  formData })
     if("data" in  res) {
@@ -173,7 +175,7 @@ const submithandler = async (e) =>{
             <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
               AliExpress Link </label>
             <div className="mt-1">
-              <input   type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+              <input   value={aliExpressLink} type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800" onChange={(e) =>setaliExpressLink(e.target.value)}/>
             </div>
           </div>
           {/* 6th input end */}

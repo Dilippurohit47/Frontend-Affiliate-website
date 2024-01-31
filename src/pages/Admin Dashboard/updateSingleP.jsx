@@ -24,13 +24,14 @@ if(isError){
 const products = data?.product;
 // console.log("data fro p" ,products)
 
-const {price, photo , name , desc, link,category} = products || {
+const {price, photo , name , desc, link,category ,aliExpressLink} = products || {
     photo: "",
     category: "",
     name: "",
     desc: "",
     price: 0,
     link:"",
+    aliExpressLink:"",
 }
 
 
@@ -41,12 +42,14 @@ const {price, photo , name , desc, link,category} = products || {
     const [photoUpdate, setPhotoUpdate] = useState("");
     const [photoFile, setPhotoFile] = useState();
     const [amazonlinkupdate, setamazonlinkupdate] = useState(link);
+    const [aliExpressLinkupdate, setaliExpressLinkupdate] = useState(aliExpressLink);
 
     useEffect(() => {
       if (data) {
         setNameUpdate(data.product.name)
         setPriceUpdate(data.product.price)
-        setamazonlinkupdate(data.product.link)
+        setamazonlinkupdate(data.product?.link)
+        setaliExpressLinkupdate(data.product?.aliExpressLink)
         setCategoryUpdate(data.product.category)
         setdescriptionupdate(data.product.desc)
       }
@@ -80,6 +83,7 @@ const {price, photo , name , desc, link,category} = products || {
         if(descriptionupdate) formdata.set("desc" , descriptionupdate)
         if(priceUpdate) formdata.set("price" , priceUpdate)
         if(amazonlinkupdate) formdata.set("link" , amazonlinkupdate)
+        if(aliExpressLinkupdate) formdata.set("aliExpressLink" , aliExpressLinkupdate)
         if(photoFile) formdata.set("photo" , photoFile)
 
         const res = await updateProduct({
@@ -92,6 +96,7 @@ const {price, photo , name , desc, link,category} = products || {
           toast.success(res.data.message)
           navigate("/updateproduct") 
           setupdating(false);
+          console.log("data from updates",data)
 
 
 
@@ -205,7 +210,7 @@ const {price, photo , name , desc, link,category} = products || {
         <label  for="inputname" className="block text-gray-800 font-semibold text-sm">
           AliExpress Link </label>
         <div className="mt-1">
-          <input   type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
+          <input value={aliExpressLinkupdate}  onChange={(e) =>setaliExpressLinkupdate(e.target.value)}  type="text" name="inputname" className="block sm:w-56 w-[70vw] rounded-md py-1.5 px-2 ring-1 ring-inset ring-gray-400 focus:text-gray-800"/>
         </div>
       </div>
       {/* 6th input end */}
