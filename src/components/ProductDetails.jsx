@@ -66,7 +66,7 @@ const ProductDetails = () => {
           </p>
 
           <p className="font-[600] sm:mt-[1vh] text-[16px]">Description : </p>
-          <p className=" w-[auto] sm:w-[40vw pr-[2.5vw] vsm:text-[#7a7a7a]   leading-[1.25rem] text-[0.9rem] text-[#000000df]">
+          <p className=" w-[auto] sm:w-[40vw] pr-[2.5vw] vsm:text-[#7a7a7a]   leading-[1.25rem] text-[0.9rem] text-[#000000df]">
             {product?.desc}
           </p>
 
