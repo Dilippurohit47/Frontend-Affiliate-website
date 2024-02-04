@@ -67,7 +67,7 @@ const UpdateProduct = () => {
                       onClick={() => navigate(`/updatesingleproduct/${i._id}`)}
                     >
                       <div className="flex  gap-[3vw] sm:gap-[0.6vw] ">
-                        <div className="sm:h-[5.9vh] h-[12vh]     flex justify-center overflow-hidden items-center bg-transparent   w-[20vw] sm:w-[2.9vw] rounded-[50%]">
+                        <div className="sm:h-[5.9vh] h-[12vh]     flex justify-center overflow-hidden items-center bg-transparent   w-[20vw] sm:w-[2.9vw] ">
                           <img
                             src={`${server}/${i.photo}`}
                             alt=""

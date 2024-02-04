@@ -32,11 +32,11 @@ const ProductDetails = () => {
     <div className="  sm:mt-[-4px] overflow-y-hidden  h-auto  pt-[9vh] sm:pt-[8vh]  ">
 
 
-      <div className="bg-[#232f3e] h-[5vh]   vsm:py-[20px]  vsm:px-[5vw]   sm:text-center sm:pt-[1vh] text-[16px] items-center gap-[15px] flex vsm:justify-start scrollbar-hide overflow-x-auto overflow-y-hidden justify-center ">
+      <div className="bg-[#232f3e] h-[5vh] sm:h-[6vh]  vsm:py-[20px]  vsm:px-[5vw]   sm:text-center sm:pt-[1vh] text-[16px] items-center gap-[15px] flex vsm:justify-start scrollbar-hide overflow-x-auto overflow-y-hidden justify-center ">
         {categoryData?.categories.map((i, index) => (
           <Link
             to={`/category/${i.name}`}
-            className="capitalize cursor-pointer text-gray-300   transition-all ease-in-out duration-[0.4s]  hover:text-[#ff8400] "
+            className="capitalize cursor-pointer text-gray-300  sm:mt-[1vh] transition-all ease-in-out duration-[0.4s]  hover:text-[#ff8400] "
             key={index}
           >
             {i.name}

@@ -84,13 +84,13 @@ const submithandler = async (e) =>{
   return (
     <div
       className="bg-white h-[auto] sm:overflow-y-hidden  overflow-y-auto sm:mt-0 mt-[11vh]  sm:flex-row  flex-col  w-[100vw] flex z-[-9] justify-center items-center  "
-      style={{ height: "calc( 100vh - 70px) "  }}>
+      style={{ height: "calc( 100vh ) "  }}>
 
 
-<h1 className="sm:absolute sm:top-[13.4vh]   text-[#60606075] sm:text-[3rem] text-[1.5rem] font-[700] sm:z-[-0] ">Create New Product </h1>
+<h1 className="sm:absolute sm:top-[15.4vh]   text-[#60606075]  sm:text-[3rem] text-[1.5rem] font-[700] sm:z-[-0] ">Create New Product </h1>
 
 
-      <div className=" flex sm:h-[70vh] sm:mt-[18vh]  h-[70vh] sm:flex-row flex-col  sm:w-[50vw] w-[90vw] sm:bg-white z-[9] rounded-[20px]  sm:shadow-2xl">
+      <div className=" flex sm:h-[70vh] sm:mt-[14vh]  h-[70vh] sm:flex-row flex-col  sm:w-[50vw] w-[90vw] sm:bg-white z-[9] rounded-[20px]  sm:shadow-xl">
 
         {/* imgdiv */}
         <div className="h-[100%] sm:w-[50%] border-[2px] sm:border-[0]  sm:border-r-[2px] pl-[1vw] pt-[1vh]  ">
@@ -115,7 +115,7 @@ const submithandler = async (e) =>{
 
 
         {/* form div */}
-        <div className="h-[100%] sm:block  sm:w-[50%] bg-white  mt-[5vh] sm:mt-0  pl-[3vw]  pt-[2vh]  sm:pt-[5vh] ">
+        <div className="h-[100%] sm:block  sm:w-[50%] bg-white  sm:rounded-[20px] mt-[5vh] sm:mt-0  pl-[3vw]  pt-[2vh]  sm:pt-[5vh] ">
 <p className="sm:hidden text-[#808080ca] font-[500] ml-[5vh] mb-[2vh] capitalize text-[1.4rem]">Enter product details</p>
 
           <form className="flex sm:block flex-col justify-center items-start " >
@@ -185,7 +185,7 @@ const submithandler = async (e) =>{
   loading ?  <>
   <p className=" font-[500] sm:mb-[0] mb-[5vh]  text-black h-[5vh] vsm:text-[1rem] text-[1rem] sm:text-[1rem] sm:w-[30vw] items-center mt-[4vh] sm:mt-[5vh] sm:ml-[5vw] ">Wait product creating....</p>
   </> : <>
-  <button className={`bg-blue-500 font-[600]  flex sm:mb-0 mb-[5vh]  hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center mt-[4vh] sm:mt-[5vh] sm:ml-[5vw] justify-center rounded-[20px]`}     onClick={(e)=>submithandler(e)}>
+  <button className={`bg-blue-500 font-[600]  flex sm:mb-0 mb-[5vh]  hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center mt-[4vh] sm:mt-[3vh] sm:ml-[5vw] justify-center rounded-[20px]`}     onClick={(e)=>submithandler(e)}>
 Create
 </button>
   </>
