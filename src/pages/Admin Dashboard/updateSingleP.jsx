@@ -150,7 +150,7 @@ const UpdateSingleP = () => {
 
         {/* form div */}
 
-        <div className="h-[100%] sm:w-[50%] pl-[3vw] pt-[5vh] ">
+        <div className="h-[100%] sm:w-[50%] pl-[3vw] pt-[5vh] sm:pt-[3vh] ">
           <form className="">
             {/* one input */}
             <div>
@@ -281,7 +281,7 @@ const UpdateSingleP = () => {
             ) : (
               <>
                 <button
-                  className="bg-blue-500 font-[600] hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center mt-[2vh] sm:mt-[5vh] sm:ml-[5vw] justify-center rounded-[20px] flex mb-[5vh] ml-0 sm:mb-0"
+                  className="bg-blue-500 font-[600] hover:bg-blue-700 transition-all duration-[0.4s] text-white h-[5vh] sm:w-[10vw] w-[30vw] items-center   mt-[2vh] sm:mt-[5vh] sm:ml-[5vw] justify-center rounded-[20px] flex mb-[5vh] ml-0 sm:mb-0"
                   onClick={(e) => UpdateProduct(e)}
                 >
                   Update
