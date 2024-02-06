@@ -108,7 +108,7 @@ const UpdateSingleP = () => {
 
   return (
     <div className="bg-white    w-[100vw] flex z-[-9] justify-center items-center  ">
-      <h1 className="absolute top-[13.4vh] text-[#69696945] sm:text-[3rem] text-[2rem] font-[700] z-[-0] ">
+      <h1 className="absolute sm:mt-[0.5vh] top-[11.4vh] text-[#69696945] sm:text-[3rem] text-[1.8rem] font-[700] z-[-0] ">
         Update Product{" "}
       </h1>
 
@@ -129,7 +129,7 @@ const UpdateSingleP = () => {
             ) : (
               <>
                 <img
-                  src={`${server}/${photo}`}
+                  src={`${photo}`}
                   alt={nameUpdate}
                   className="sm:h-[40vh] h-[40vh] object-contain"
                 />

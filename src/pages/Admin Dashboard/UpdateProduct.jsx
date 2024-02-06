@@ -69,7 +69,7 @@ const UpdateProduct = () => {
                       <div className="flex  gap-[3vw] sm:gap-[0.6vw] ">
                         <div className="sm:h-[5.9vh] h-[12vh]     flex justify-center overflow-hidden items-center bg-transparent   w-[20vw] sm:w-[2.9vw] ">
                           <img
-                            src={`${server}/${i.photo}`}
+                            src={`${i.photo}`}
                             alt=""
                             className="object-contain  h-[9vh] sm:h-[4.4vh]"
                           />

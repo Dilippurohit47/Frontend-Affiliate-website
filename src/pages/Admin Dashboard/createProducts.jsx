@@ -64,6 +64,7 @@ const submithandler = async (e) =>{
       setdescription("")
       setamazonLink("")
       setprice("")
+      setaliExpressLink("")
       fileInputRef.current.value = '';
     setloading(false)
 
@@ -87,7 +88,7 @@ const submithandler = async (e) =>{
       style={{ height: "calc( 100vh ) "  }}>
 
 
-<h1 className="sm:absolute sm:top-[15.4vh]   text-[#60606075]  sm:text-[3rem] text-[1.5rem] font-[700] sm:z-[-0] ">Create New Product </h1>
+<h1 className="sm:absolute sm:top-[15.8vh]   text-[#60606075]  sm:text-[3rem] text-[1.5rem] font-[700] sm:z-[-0] ">Create New Product </h1>
 
 
       <div className=" flex sm:h-[70vh] sm:mt-[14vh]  h-[70vh] sm:flex-row flex-col  sm:w-[50vw] w-[90vw] sm:bg-white z-[9] rounded-[20px]  sm:shadow-xl">
