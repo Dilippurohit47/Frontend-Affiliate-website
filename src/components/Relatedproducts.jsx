@@ -17,7 +17,7 @@ if(isError) {
 console.log("data from  related",data)
 
   return (
-    <div className='bg-[#232F3E] h-[auto]   sm:h-[auto] sm:px-[1vw] vsm:px-0 sm:mt-[10vh] mt-[8vh]  py-[2vh] '>
+    <div className='bg-[#232F3E] h-[auto]    sm:h-[auto] sm:px-[1vw] vsm:px-0 sm:mt-[10vh] mt-[8vh]  py-[2vh] '>
 
         <h1 className='text-white font-[500] ml-[3vw] sm:mb-0 mb-[3vh] sm:ml-0 sm:text-[2vw] text-[1.5rem] w-[auto]'>Related Products</h1>
 

@@ -18,7 +18,16 @@ export const userApi = createApi({
                 body:user,
 
             })
-        })
+        }),
+
+
+        AddToCart :builder.mutation({
+            query:({userId,productId}) =>({
+              url:`/cart/${userId}/${productId}`,
+              method:"POST"
+            })
+          })
+
     })
 
 }) 
@@ -38,4 +47,4 @@ export const getUser= async (id) =>{
 
 
 
-export const  {useLoginMutation} = userApi
+export const  {useLoginMutation , useAddToCartMutation} = userApi

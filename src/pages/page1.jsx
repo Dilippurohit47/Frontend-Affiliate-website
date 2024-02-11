@@ -19,7 +19,7 @@ const {data:allProducts , loading:allproductsLoading , isError:allProductsError}
 
 
 const product = data?.products
-console.log( "all",allProducts)
+
   
   return (
     <div className='h-[100vh]  max-w-[100vw]  pt-[1.5vh] bg-gray-300 sm:pt-[2vh] '>

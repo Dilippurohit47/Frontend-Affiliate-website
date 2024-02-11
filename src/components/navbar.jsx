@@ -8,6 +8,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { GrUserAdmin } from "react-icons/gr";
 import { IoMenu } from "react-icons/io5";
+import { FaCartArrowDown } from "react-icons/fa";
 
 import toast from "react-hot-toast";
 import { useCategoryQuery } from "../redux/api/productApi";
@@ -85,7 +86,7 @@ const Navbar = () => {
 
           <h1 className="text-[1.25rem] font-[700] inline-block ">
             {" "}
-            Hello, {user?.name.split(" ")[0]}
+            Hello, {user?.name?.split(" ")[0]}
           </h1>
         </div>
 
@@ -123,7 +124,8 @@ const Navbar = () => {
       <div>
         <Link to={"/"}>Logo</Link>
       </div>
-      <div className="flex  sm:ml-[35vw] vsm:gap-[8px] vsm:ml-[20px]  sm:gap-[20px] gap-[10px] ml-[45px] ">
+
+      <div className="flex  sm:ml-[30vw] vsm:gap-[8px] vsm:ml-[20px]  sm:gap-[20px] gap-[10px] ml-[45px] ">
         <div className="flex cursor-pointer ">
           <input
             type="text"
@@ -165,7 +167,7 @@ const Navbar = () => {
 
               <h1 className="text-[1.25rem] font-[700] inline-block ">
                 {" "}
-                Hello, {user?.name.split(" ")[0]}
+                Hello, {user?.name?.split(" ")[0]}
               </h1>
             </div>
 
@@ -209,25 +211,25 @@ const Navbar = () => {
 
           {/* navbar for mobile devices */}
           <div
-            className={`bg-white overflow-y-auto overflow-x-hidden vsm:w-[70vw]  fixed z-[999] h-[80vh] w-[60vw] border-r-[1px] top-[0]  shadow-2xl transition-all duration-[0.4s] ease-in-out ${
+            className={`bg-[#1C263D] text-white overflow-y-auto overflow-x-hidden vsm:w-[70vw]  fixed z-[999] h-[80vh] w-[60vw] border-r-[1px] top-[0]  shadow-2xl transition-all duration-[0.4s] ease-in-out ${
               menu ? "right-[-0.5vw]" : "right-[-70vw]"
             }`}
           >
-            <div className="bg-[#232F3E] text-white px-[1vw] py-[2vh]  ">
+            <div className="bg-[#1C263D] border-b-2 text-white px-[1vw] py-[2vh]  ">
               <p className="inline-block text-[1.35rem] translate-y-[0.4vh]  mr-[0.5vw]">
                 <CgProfile />{" "}
               </p>
 
               <h1 className="text-[1.25rem] font-[700] inline-block ">
                 {" "}
-                Hello, {user?.name.split(" ")[0]}
+                Hello, {user?.name?.split(" ")[0]}
               </h1>
             </div>
 
-            <div className="mt-[1vh] pl-[2vw] text-left">
-              <Link to={"/"}>
+            <div className="mt-[1vh]  pl-[2vw] text-left">
+              <Link to={"/"} className=" ">
                 <h1
-                  className="  h-[5vh] px-[1vw] py-[1vh] font-[500]   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
+                  className="  h-[5vh] px-[1vw] py-[0.5vh] font-[500]   cursor-pointer   transition-all duration-[0.2s]"
                   onClick={() => setmenu(false)}
                 >
                   Home
@@ -236,10 +238,10 @@ const Navbar = () => {
 
               {user?.role === "admin" ? (
                 <>
-                  <div>
+                  <div className="mt-[-1vh]">
                     <Link to={"/"}>
                       <h1
-                        className="  h-[5vh] px-[1vw] py-[1vh] font-[500]   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
+                        className="  h-[5vh] px-[1vw] py-[1vh] font-[500]    cursor-pointer transition-all duration-[0.2s]"
                         onClick={() => {
                           setadminNav(!adminNav), setmenu(false);
                         }}
@@ -253,18 +255,19 @@ const Navbar = () => {
                 ""
               )}
 
-              <div className=" transition ease-in duration-[0.3s]">
-                <Link to={"#"}>
+              <div className=" transition ease-in mt-[-1vh] duration-[0.3s]">
+                <Link to={"#"} >
                   <h1
-                    className="  h-[5vh] px-[1vw] py-[1vh] font-[500]   cursor-pointer hover:bg-gray-100  transition-all flex duration-[0.2s]"
+                    className="  h-[5vh] px-[1vw] py-[1vh] font-[500] cursor-pointer    transition-all flex duration-[0.2s]"
                     onClick={() => setshowCat(!showCat)}
                   >
                     Category{" "}
-                    <p className="translate-y-[1vh]">
+                    <p className="translate-y-[1vh] ml-[2vw] ">
                       <IoIosArrowDown />
                     </p>{" "}
                   </h1>
                 </Link>
+
 
                 <div
                   className={`    overflow-hidden ml-[2vw] transition ease-in duration-[0.3s]  ${
@@ -275,7 +278,7 @@ const Navbar = () => {
                     <Link
                       to={`category/${i.name}`}
                       key={index}
-                      className="list-none text-[#616060d7] capitalize w-[25vw]  block  pr-[50px]  font-[400] text-[16px]"
+                      className="list-none text-[#ffffff93] capitalize w-[25vw]  block  pr-[50px]  font-[400] text-[16px]"
                       onClick={() => {
                         setmenu(false), setshowCat(false);
                       }}
@@ -286,6 +289,16 @@ const Navbar = () => {
                 </div>
               </div>
 
+
+              <Link to="/cart" className="flex gap-2   pr-[50px]  font-[500] text-[16px] items-center"    onClick={() => {
+                        setmenu(false), setshowCat(false);
+                      }}>
+
+<p className="font-500 inline-block ml-[1vw] text-center  text-[5vw] translate-y-[-0.4vh] mt-[1vh] ">Cart</p>
+ <p className="inline-block ml-[0.4vw] text-center  text-[4.5vw] translate-y-[-0.4vh] mt-[1vh]"><FaCartArrowDown/></p>
+</Link>
+
+
               {user ? (
                 <>
                   <Link to={"/"}>
@@ -295,7 +308,7 @@ const Navbar = () => {
                     >
                       {" "}
                       Log Out{" "}
-                      <p className="inline-block ml-[1vw] text-center  text-[4.5vw] translate-y-[-0.4vh] mt-[1vh]">
+                      <p className="inline-block ml-[2.5vw] text-center  text-[4.5vw] translate-y-[-0.4vh] mt-[1vh]">
                         <CgProfile />
                       </p>
                     </h1>
@@ -320,7 +333,7 @@ const Navbar = () => {
             </div>
 
             <p
-              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[45vh] vsm:translate-x-[32vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+              className="translate-y-[40vh] text-[2rem] vsm:translate-y-[40vh] vsm:translate-x-[32vw]  w-[7vw] h-[4vh] items-center  text-white  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
               onClick={() => setmenu(!menu)}
             >
               <IoCloseOutline />
@@ -401,6 +414,11 @@ const Navbar = () => {
             ) : (
               <></>
             )}
+
+<Link to="/cart" className="sm:flex gap-2 hidden items-center">
+<FaCartArrowDown/> 
+<p className="font-500 text-[18px] ">Cart</p>
+</Link>
 
             <Link
               className=" hidden sm:flex items-center gap-[4px] "

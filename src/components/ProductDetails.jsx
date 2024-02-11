@@ -12,6 +12,10 @@ import IphoneImg from "../assets/Mi phone.jpeg";
 import { FaCartArrowDown } from "react-icons/fa";
 import Relatedproducts from "./Relatedproducts";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SetcartList, removeFromCart } from "../redux/reducer/userReducer";
+import { useAddToCartMutation } from "../redux/api/userApi";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -24,15 +28,51 @@ const ProductDetails = () => {
 
   const { id } = useParams();
 
+  console.log("productid",id)
+
   const { data, isLoading, isError } = useSingleProductQuery(id);
 
   const product = data?.product;
 
+  //add tocart
+  const user = useSelector((state) => state.userReducer);
+  const userId = user?.user?._id;
+  const cartItem = useSelector((state) =>state?.userReducer?.user?.cartItems)
+
+  const dispatch = useDispatch();
+
+  const [Addcart] = useAddToCartMutation();
+
+  const addToCart = async () => {
+    try {
+      const data = await Addcart({ userId: userId, productId: id });
+
+      if (data?.data?.success === true) {
+   const sinleproduct = data?.data?.product
+   console.log(sinleproduct)
+        toast .success(data?.data?.message);
+        dispatch(SetcartList(sinleproduct))
+     
+      } else {
+        // console.log("else", data?.error?.data?.message);
+        toast.error(data?.error?.data?.message);
+        dispatch(removeFromCart(id))
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  };
+
+
+
+
+
   return (
-    <div className="  sm:mt-[-4px] overflow-y-hidden  h-auto  pt-[9vh] sm:pt-[8vh]  ">
+    <div className="  sm:mt-[-4px] overflow-y-hidden   h-auto  pt-[9vh] sm:pt-[8vh]  ">
 
 
-      <div className="bg-[#232f3e] h-[5vh] sm:h-[6vh]  vsm:py-[20px]  vsm:px-[5vw]   sm:text-center sm:pt-[1vh] text-[16px] items-center gap-[15px] flex vsm:justify-start scrollbar-hide overflow-x-auto overflow-y-hidden justify-center ">
+      <div className="bg-[#232f3e] h-[5vh] sm:h-[6vh]  vsm:py-[20px]  vsm:px-[5vw] vsm:mt-[-0.8vh]   sm:text-center sm:pt-[1vh] text-[16px] items-center gap-[15px] flex vsm:justify-start scrollbar-hide overflow-x-auto overflow-y-hidden justify-center ">
         {categoryData?.categories.map((i, index) => (
           <Link
             to={`/category/${i.name}`}
@@ -81,7 +121,23 @@ const ProductDetails = () => {
   </>
 }
 
-          
+
+
+{
+  cartItem?.some?.((item) =>item?._id === id) ? <Link  to="#" onClick={() =>addToCart()}>
+  <button className="bg-[#ff1212e7]   ml-[25vw] sm:ml-0  w-[50vw] text-white sm:w-[12vw] h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[2vh] sm:mt-[2vh] transition-all ease-in-out duration-[0.4s] sm:hover:scale-[1.08]  block">
+  Remove from cart{" "}
+  </button>
+</Link>      : <Link  to="#" onClick={() =>addToCart()}>
+  <button className="bg-[#00b3fae7]  ml-[25vw] sm:ml-0  w-[50vw] text-white sm:w-[12vw] h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[2vh] sm:mt-[2vh] transition-all ease-in-out duration-[0.4s] sm:hover:scale-[1.08]  block">
+  Add To cart{" "}
+  </button>
+</Link>     
+}
+
+
+
+ 
 
 {
   product?.aliExpressLink && <>

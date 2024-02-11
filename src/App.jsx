@@ -10,6 +10,7 @@ import { getUser } from './redux/api/userApi'
 import { auth } from './firebase'
 import Apichecker from './pages/Admin Dashboard/Apichecker'
 import PageNotfound from './pages/PageNotfound'
+import CartItems from "./pages/CartItem"
 
 // import ProductDetails from './components/ProductDetails'
 
@@ -83,6 +84,11 @@ console.log("userrole" , user?.role)
 <Route path="/newproduct" element={<AdminRoute element={<CreateProduct />} />} />
   <Route path="/updateproduct" element={<AdminRoute element={<UpdateProduct/>} />}/>
   <Route path="/updatesingleproduct/:id" element={<AdminRoute element={<UpdateSingleP/>} />}/>
+  <Route path="/cart" element={<CartItems/>}/>
+
+
+
+
 <Route path="*" element={<PageNotfound/>} />
 
 </Routes>
