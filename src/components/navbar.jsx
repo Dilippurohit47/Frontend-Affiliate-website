@@ -23,9 +23,8 @@ const Navbar = () => {
   const [showCat, setshowCat] = useState(false);
 
   const [menu, setmenu] = useState(false);
-  // console.log(menu)
 
-  const { user } = useSelector((state) => state.userReducer);
+  const user = useSelector((state) => state.userReducer);
 
   const searchHandler = (e) => {
     setsearch("");
@@ -35,12 +34,15 @@ const Navbar = () => {
   const { data } = useCategoryQuery();
   const categories = data?.categories;
   // const { cat } = useParams();
+  const products = user?.user;
+  const cartLength = products?.cartItems?.length;
+
 
   const loginHandler = async () => {
     try {
       const provider = new GoogleAuthProvider();
       const { user } = await signInWithPopup(auth, provider);
-      console.log(user);
+
 
       const res = await login({
         name: user.displayName,
@@ -48,10 +50,9 @@ const Navbar = () => {
         _id: user.uid,
         role: "user",
       });
-      console.log("res", res);
 
       if ("data" in res) {
-        console.log(res);
+
         toast.success(res.data.message);
       } else {
         console.log("error in login func", res.error.data.message);
@@ -147,9 +148,11 @@ const Navbar = () => {
         {/* menu div for mobile devices */}
 
         <div className=" flex items-center   sm:hidden text-center  ">
-          <p 
+          <p
             className="text-[8vw] vsm:text-[9vw]  md:text-[6vw] lg:text-[5vw]"
-            onClick={() => {setmenu(!menu) , setadminNav(false)}}
+            onClick={() => {
+              setmenu(!menu), setadminNav(false);
+            }}
           >
             <IoMenu />
           </p>
@@ -171,7 +174,10 @@ const Navbar = () => {
               </h1>
             </div>
 
-            <div className="mt-[1vh] ml-[1vw]" onClick={() => setadminNav(false)}>
+            <div
+              className="mt-[1vh] ml-[1vw]"
+              onClick={() => setadminNav(false)}
+            >
               <Link to={"/"}>
                 <h1
                   className="  h-[5vh] px-[1vw] py-[1vh] font-[500]   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
@@ -200,11 +206,11 @@ const Navbar = () => {
               </Link>
 
               <p
-              className="translate-y-[45vh] text-[2rem] vsm:translate-y-[45vh] vsm:translate-x-[30vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
-              onClick={() => setadminNav(false)}
-            >
-              <IoCloseOutline />
-            </p>
+                className="translate-y-[45vh] text-[2rem] vsm:translate-y-[45vh] vsm:translate-x-[30vw]  w-[6vw] h-[3vh] items-center  text-black  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+                onClick={() => setadminNav(false)}
+              >
+                <IoCloseOutline />
+              </p>
             </div>
           </div>
           {/* admin nav end */}
@@ -256,7 +262,7 @@ const Navbar = () => {
               )}
 
               <div className=" transition ease-in mt-[-1vh] duration-[0.3s]">
-                <Link to={"#"} >
+                <Link to={"#"}>
                   <h1
                     className="  h-[5vh] px-[1vw] py-[1vh] font-[500] cursor-pointer    transition-all flex duration-[0.2s]"
                     onClick={() => setshowCat(!showCat)}
@@ -264,10 +270,12 @@ const Navbar = () => {
                     Category{" "}
                     <p className="translate-y-[1vh] ml-[2vw] ">
                       <IoIosArrowDown />
+                 
                     </p>{" "}
+                
                   </h1>
+             
                 </Link>
-
 
                 <div
                   className={`    overflow-hidden ml-[2vw] transition ease-in duration-[0.3s]  ${
@@ -289,15 +297,26 @@ const Navbar = () => {
                 </div>
               </div>
 
+              <Link
+                to="/cart"
+                className="flex gap-2   pr-[50px]  font-[500] text-[16px] items-center"
+                onClick={() => {
+                  setmenu(false), setshowCat(false);
+                }}
+              >
+                <p className="font-500 inline-block ml-[1vw] text-center   translate-y-[-0.4vh] mt-[1vh] ">
+                  Cart
+                </p>
+                <p className="inline-block ml-[0.4vw] text-center  text-[4.5vw] translate-y-[-0.4vh] mt-[1vh]">
+                  <FaCartArrowDown />
+                </p>
 
-              <Link to="/cart" className="flex gap-2   pr-[50px]  font-[500] text-[16px] items-center"    onClick={() => {
-                        setmenu(false), setshowCat(false);
-                      }}>
-
-<p className="font-500 inline-block ml-[1vw] text-center  text-[5vw] translate-y-[-0.4vh] mt-[1vh] ">Cart</p>
- <p className="inline-block ml-[0.4vw] text-center  text-[4.5vw] translate-y-[-0.4vh] mt-[1vh]"><FaCartArrowDown/></p>
-</Link>
-
+                {cartLength > 0 && (
+                    <div className="bg-red-500   text-[12px] text-white flex items-center justify-center h-[5.5vw] w-[5.5vw] rounded-full">
+                      {cartLength}
+                    </div>
+                  )}
+              </Link>
 
               {user ? (
                 <>
@@ -318,7 +337,7 @@ const Navbar = () => {
                 <>
                   <Link to={"/"}>
                     <h1
-                      className="   h-[5vh] px-[1vw]  py-[1vh] font-[500]  flex items-center   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
+                      className="   h-[5vh] px-[1vw]  py-[1vh] font-[500]  flex items-center   cursor-pointer   transition-all duration-[0.2s]"
                       onClick={loginHandler}
                     >
                       {" "}
@@ -333,7 +352,7 @@ const Navbar = () => {
             </div>
 
             <p
-              className="translate-y-[40vh] text-[2rem] vsm:translate-y-[40vh] vsm:translate-x-[32vw]  w-[7vw] h-[4vh] items-center  text-white  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
+              className="translate-y-[30vh]   text-[2rem] vsm:translate-y-[20vh] vsm:translate-x-[32vw]  w-[7vw] h-[4vh] items-center  text-white  flex rounded-full justify-center  translate-x-[30vw] transition ease-in  duration-[1s]"
               onClick={() => setmenu(!menu)}
             >
               <IoCloseOutline />
@@ -342,9 +361,6 @@ const Navbar = () => {
         </div>
 
         {/* menu div end for mobile devices */}
-
-
-
 
         {/* categori div start */}
 
@@ -415,10 +431,19 @@ const Navbar = () => {
               <></>
             )}
 
-<Link to="/cart" className="sm:flex gap-2 hidden items-center">
-<FaCartArrowDown/> 
-<p className="font-500 text-[18px] ">Cart</p>
-</Link>
+            <Link
+              to="/cart"
+              className="sm:flex relative gap-2 hidden items-center"
+            >
+              <FaCartArrowDown />
+              <p className="font-500 text-[18px] ">Cart</p>
+
+              {cartLength > 0 && (
+                <div className="bg-[#ee3f3fc8] absolute text-[12px] text-white flex items-center justify-center h-[1.2vw] w-[1.2vw] top-[5px] left-[50px] rounded-full">
+                  {cartLength}
+                </div>
+              )}
+            </Link>
 
             <Link
               className=" hidden sm:flex items-center gap-[4px] "

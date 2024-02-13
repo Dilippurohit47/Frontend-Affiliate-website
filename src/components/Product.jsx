@@ -25,12 +25,12 @@ const Product = ({ name, price, photo, id }) => {
 
       if (data?.data?.success === true) {
    const sinleproduct = data?.data?.product
-   console.log(sinleproduct)
+
         toast.success(data?.data?.message);
         dispatch(SetcartList(sinleproduct))
      
       } else {
-        // console.log("else", data?.error?.data?.message);
+
         toast.error(data?.error?.data?.message);
         dispatch(removeFromCart(id))
       }
@@ -40,9 +40,7 @@ const Product = ({ name, price, photo, id }) => {
     }
   };
 
-  // const [inCart, setinCart] = useState(false);
-// console.log("id",id)
-// console.log("cart",user?.user?.cartItems[0]?.product?._id)
+
   const navigate = useNavigate();
 
   return (
@@ -64,17 +62,7 @@ const Product = ({ name, price, photo, id }) => {
       </div>
 
 
-{/* 
-      <div
-        className="absolute  top-[43%] left-[42%] hidden bg-[#00aeff] rounded-full h-[4vh] w-[4vh] transition ease-in-out duration-[0.3s] group-hover:flex justify-center group-hover:h-[5vh] group-hover:w-[5vh] items-center"
-        onClick={(e) => {
-          e.stopPropagation();
-          addToCart();
-          setinCart(true);
-        }}
-      >
-        <LuPlus style={{ fontSize: "20px" }} />
-      </div> */}
+
       {
       cartItem?.some?.(
       (item) => item?._id.toString() === id

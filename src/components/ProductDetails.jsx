@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
   const { id } = useParams();
 
-  console.log("productid",id)
+
 
   const { data, isLoading, isError } = useSingleProductQuery(id);
 
@@ -49,12 +49,12 @@ const ProductDetails = () => {
 
       if (data?.data?.success === true) {
    const sinleproduct = data?.data?.product
-   console.log(sinleproduct)
+
         toast .success(data?.data?.message);
         dispatch(SetcartList(sinleproduct))
      
       } else {
-        // console.log("else", data?.error?.data?.message);
+       
         toast.error(data?.error?.data?.message);
         dispatch(removeFromCart(id))
       }

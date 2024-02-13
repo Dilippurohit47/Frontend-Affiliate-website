@@ -38,13 +38,13 @@ useEffect(() =>{
   onAuthStateChanged(auth, async(user) =>{
     if(user) {
       const data = await getUser(user.uid)
-      console.log("logged in")
+
       dispatch(userExist(data.user))
     }
 
     else{
       dispatch(userNotExist())
-      console.log("user not logged in ")
+
     }
   })
 
@@ -53,7 +53,7 @@ useEffect(() =>{
 
 
 const AdminRoute = ({ element }) => {
-console.log("userrole" , user?.role)
+
   if(user?.role == "admin"){
     return element
   }

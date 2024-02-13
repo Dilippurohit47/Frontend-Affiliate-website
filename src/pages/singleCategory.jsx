@@ -11,7 +11,7 @@ const {cat} = useParams();
 const {data , isLoading, isError} =useCategoryProductQuery(cat)
 
 const products = data?.categoryProducts
-console.log(products)
+
 
   return (
     <div className=' '>

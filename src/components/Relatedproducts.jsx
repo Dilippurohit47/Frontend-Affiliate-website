@@ -5,7 +5,7 @@ import Product from './Product'
 const Relatedproducts = ({category}) => {  
 
 // const category = "clothes"
-console.log( "category relateds",category)
+
 
 const {data , isError ,isLoading} = useCategoryProductQuery(category)
 
@@ -13,8 +13,6 @@ if(isError) {
     console.log(isError)
 }
 
-
-console.log("data from  related",data)
 
   return (
     <div className='bg-[#232F3E] h-[auto]    sm:h-[auto] sm:px-[1vw] vsm:px-0 sm:mt-[10vh] mt-[8vh]  py-[2vh] '>
