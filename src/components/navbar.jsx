@@ -37,12 +37,10 @@ const Navbar = () => {
   const products = user?.user;
   const cartLength = products?.cartItems?.length;
 
-
   const loginHandler = async () => {
     try {
       const provider = new GoogleAuthProvider();
       const { user } = await signInWithPopup(auth, provider);
-
 
       const res = await login({
         name: user.displayName,
@@ -52,7 +50,6 @@ const Navbar = () => {
       });
 
       if ("data" in res) {
-
         toast.success(res.data.message);
       } else {
         console.log("error in login func", res.error.data.message);
@@ -242,7 +239,7 @@ const Navbar = () => {
                 </h1>
               </Link>
 
-              {user?.role === "admin" ? (
+              {products?.role === "admin" ? (
                 <>
                   <div className="mt-[-1vh]">
                     <Link to={"/"}>
@@ -270,11 +267,8 @@ const Navbar = () => {
                     Category{" "}
                     <p className="translate-y-[1vh] ml-[2vw] ">
                       <IoIosArrowDown />
-                 
                     </p>{" "}
-                
                   </h1>
-             
                 </Link>
 
                 <div
@@ -312,17 +306,17 @@ const Navbar = () => {
                 </p>
 
                 {cartLength > 0 && (
-                    <div className="bg-red-500   text-[12px] text-white flex items-center justify-center h-[5.5vw] w-[5.5vw] rounded-full">
-                      {cartLength}
-                    </div>
-                  )}
+                  <div className="bg-red-500   text-[12px] text-white flex items-center justify-center h-[5.5vw] w-[5.5vw] rounded-full">
+                    {cartLength}
+                  </div>
+                )}
               </Link>
 
-              {user ? (
+              {products ? (
                 <>
                   <Link to={"/"}>
                     <h1
-                      className="   h-[5vh] px-[1vw]  py-[1vh] font-[500]  flex items-center   cursor-pointer hover:bg-gray-100  transition-all duration-[0.2s]"
+                      className="   h-[5vh] px-[1vw]  py-[1vh] font-[500]  flex items-center   cursor-pointer  transition-all duration-[0.2s]"
                       onClick={logoutHandler}
                     >
                       {" "}
@@ -401,7 +395,7 @@ const Navbar = () => {
 
         {/* categori div end */}
 
-        {!user ? (
+        {!products ? (
           <>
             <Link
               className=" hidden sm:flex items-center gap-[8px] "
@@ -415,7 +409,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {user?.role === "admin" ? (
+            {products?.role === "admin" ? (
               <>
                 <p
                   className="hidden sm:flex items-center gap-[3px]  cursor-pointer "
@@ -428,7 +422,7 @@ const Navbar = () => {
                 </p>
               </>
             ) : (
-              <></>
+              <> </>
             )}
 
             <Link

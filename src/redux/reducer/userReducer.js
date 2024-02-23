@@ -1,9 +1,7 @@
     import { createSlice } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast';
     const initialState ={
-        user :{
-            cartItems: [],
-        },
+        user :null,
         loading:true,
     }
     export const userReducer = createSlice({
