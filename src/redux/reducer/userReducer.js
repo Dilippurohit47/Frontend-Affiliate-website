@@ -13,11 +13,14 @@ import toast from 'react-hot-toast';
             userExist:(state , action) =>{
                 state.loading = false;
                 state.user = action.payload;
+            console.log("user added in redux ")
+
 
             },
         userNotExist : (state) =>{
             state.loading =false,
             state.user = null;
+            console.log("user remove from redux ")
         },
         SetcartList : (state,action) =>{
     

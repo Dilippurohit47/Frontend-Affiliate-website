@@ -12,9 +12,9 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 import toast from "react-hot-toast";
 import { useCategoryQuery } from "../redux/api/productApi";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { IoCloseOutline } from "react-icons/io5";
+import { userExist,userNotExist } from "../redux/reducer/userReducer";
 
 const Navbar = () => {
   const [down, setdown] = useState(false);
@@ -25,16 +25,18 @@ const Navbar = () => {
   const [menu, setmenu] = useState(false);
 
   const user = useSelector((state) => state.userReducer);
+  console.log("user from navabr",user?.user?.role)
 
   const searchHandler = (e) => {
     setsearch("");
   };
 
+  const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const { data } = useCategoryQuery();
   const categories = data?.categories;
-  // const { cat } = useParams();
   const products = user?.user;
+
   const cartLength = products?.cartItems?.length;
 
   const loginHandler = async () => {
@@ -49,8 +51,12 @@ const Navbar = () => {
         role: "user",
       });
 
+      console.log("res from login",res)
+
       if ("data" in res) {
         toast.success(res.data.message);
+        dispatch(userExist(res?.data?.user));
+
       } else {
         console.log("error in login func", res.error.data.message);
       }
@@ -64,6 +70,7 @@ const Navbar = () => {
     try {
       await signOut(auth);
       toast.success("sign out successfully");
+      dispatch(userNotExist())
     } catch (error) {
       toast.error("sign out failed try again later");
     }
@@ -409,7 +416,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {products?.role === "admin" ? (
+            {products.role === "admin" ? (
               <>
                 <p
                   className="hidden sm:flex items-center gap-[3px]  cursor-pointer "
