@@ -9,7 +9,8 @@ import { server } from "../../redux/reducer/store";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { removeAdminProduct  } from "../../redux/reducer/userReducer"
 
 const UpdateProduct = () => {
   const { user } = useSelector((state) => state.userReducer);
@@ -17,7 +18,7 @@ const UpdateProduct = () => {
   const [deleteProduct] = useDeleteProductMutation();
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const deleteHandler = async (_id) => {
     const res = await deleteProduct({
       Productid: _id,
@@ -25,6 +26,7 @@ const UpdateProduct = () => {
     });
     if ("data" in res) {
       toast.success(res.data.message);
+    dispatch(removeAdminProduct(_id));
       navigate("/updateproduct");
     } else {
       console.log(res);
@@ -33,19 +35,15 @@ const UpdateProduct = () => {
     }
   };
 
-  const totalCat = data?.products?.map((item) => {
+  const totalCat =user?.productsCreated?.map((item) => {
     return item?.category;
   });
 
   const uniqueCategories = Array.from(new Set(totalCat));
 
-  const Length = data?.products?.length;
+  const Length = user?.productsCreated?.length;
 
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <>
-      <div
+  return(      <div
         className="bg-[#80808093] mt-[8.6vh] sm:ml-[20vw] overflow-y-auto  overflow-x-hidden px-[0.5vw] h-[90vh] py-[0.5vh] "
         style={{ sm: { width: "calc(100vw - 20vw)" } }}
       >
@@ -54,7 +52,7 @@ const UpdateProduct = () => {
           <p className="font-500">Total Categories : {uniqueCategories?.length}</p>
         </div>
 
-        {data?.products?.length === 0 ? (
+        {user?.productsCreated?.length === 0 ? (
           <>
             <div className="text-white text-[1.15rem] h-[100%] gap-[1vw] flex justify-center items-center">
               <p>No Products Availabe for update. </p>
@@ -67,7 +65,7 @@ const UpdateProduct = () => {
         ) : (
           <>
             <div className=" ">
-              {data?.products?.map((i, index) => (
+              {user?.productsCreated?.map((i, index) => (
                 <>
                   <div className=" cursor-pointer transition ease-in duration-[0.2s] overflow-x-hidden  bg-white mb-[0.2vh] hover:bg-[#e8e8e8] flex items-center justify-between  h-[11vh] overflow-y-hidden   sm:h-[8vh]">
                     <div
@@ -108,8 +106,7 @@ const UpdateProduct = () => {
           </>
         )}
       </div>
-    </>
-  );
+  )
 };
 
 export default UpdateProduct;

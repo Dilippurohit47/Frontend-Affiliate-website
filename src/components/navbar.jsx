@@ -25,7 +25,6 @@ const Navbar = () => {
   const [menu, setmenu] = useState(false);
 
   const user = useSelector((state) => state.userReducer);
-  console.log("user from navabr",user?.user?.role)
 
   const searchHandler = (e) => {
     setsearch("");
@@ -51,7 +50,6 @@ const Navbar = () => {
         role: "user",
       });
 
-      console.log("res from login",res)
 
       if ("data" in res) {
         toast.success(res.data.message);
@@ -285,14 +283,14 @@ const Navbar = () => {
                 >
                   {categories?.map((i, index) => (
                     <Link
-                      to={`category/${i.name}`}
+                      to={`category/${i?.name}`}
                       key={index}
                       className="list-none text-[#ffffff93] capitalize w-[25vw]  block  pr-[50px]  font-[400] text-[16px]"
                       onClick={() => {
                         setmenu(false), setshowCat(false);
                       }}
                     >
-                      {i.name}
+                      {i?.name}
                     </Link>
                   ))}
                 </div>

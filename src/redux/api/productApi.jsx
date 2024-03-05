@@ -40,8 +40,8 @@ export const productApi = createApi({
     }),
 
     createProduct:builder.mutation({
-      query: ({ formData,id }) => ({
-        url: `create/new?id=${id}`,
+      query: ({ formData,userId }) => ({
+        url: `create/new?id=${userId}`,
         method: "POST",
         body: formData,
       }),

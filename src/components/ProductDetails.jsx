@@ -148,15 +148,9 @@ const ProductDetails = () => {
   </>
 }
 
-
-
-          {/* <button className="bg-[#118000d9] w-[50vw] ml-[25vw] sm:ml-0 text-white sm:w-[12vw]  h-[6vh]  sm:h-[5vh]  text-center rounded-full mt-[1vh]   transition-all ease-in-out duration-[0.4s] hover:scale-[1.08]  ">
-            Buy Now india
-          </button> */}
         </div>
       </div>
-
-      <Relatedproducts category={product?.category}/>
+    <Relatedproducts category={product?.category}/>
     </div>
   );
 };
